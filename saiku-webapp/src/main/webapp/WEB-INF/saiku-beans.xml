@@ -57,9 +57,9 @@
     </bean>
 
 
-    <bean id="licenseUtilsBean" class="org.saiku.service.license.LicenseUtils" init-method="init">
+    <!--<bean id="licenseUtilsBean" class="org.saiku.service.license.LicenseUtils" init-method="init">
         <property name="repositoryDatasourceManager" ref="repositoryDsManager" />
-    </bean>
+    </bean>-->
 
 
     <bean id="h2database" class="org.saiku.database.Database" init-method="init">
@@ -77,7 +77,7 @@
         <property name="sessionRepo" ref="sessionRepo"/>
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authorisationPredicate" ref="authorisationPredicate"/>
-        <property name="l" ref="licenseUtilsBean"/>
+        <!--<property name="l" ref="licenseUtilsBean"/>-->
         <property name="orbisAuthEnabled" value="${orbis.auth.enabled}"/>
     </bean>
 

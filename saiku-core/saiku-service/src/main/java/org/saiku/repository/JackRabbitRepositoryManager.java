@@ -125,7 +125,6 @@ public class JackRabbitRepositoryManager implements IRepositoryManager {
       //Try default login
       session = repository.login(
           new SimpleCredentials("admin", "admin".toCharArray()));
-
     }
     catch(Exception e){
       //If default fails check oldpassword property
