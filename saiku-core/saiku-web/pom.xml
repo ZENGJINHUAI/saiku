@@ -146,9 +146,14 @@
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>pentaho</groupId>
             <artifactId>mondrian</artifactId>
+        </dependency>-->
+        <dependency>
+            <groupId>com.qunar.3dparty</groupId>
+            <artifactId>mondrian-kylin-dialect</artifactId>
+            <classifier>dialect</classifier>
         </dependency>
         <dependency>
             <groupId>org.olap4j</groupId>
@@ -243,8 +248,8 @@
         </dependency>
 
         <dependency>
-            <groupId>iText</groupId>
-            <artifactId>iText</artifactId>
+            <groupId>itext</groupId>
+            <artifactId>itext</artifactId>
             <version>4.2.0</version>
         </dependency>
         <dependency>

@@ -58,10 +58,15 @@
 	</build>
 	<dependencies>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>pentaho</groupId>
 			<artifactId>mondrian</artifactId>
-			<version>4.3.0.1.1-SPARK</version>
+			<version>4.3.0.1-130</version>
+		</dependency>-->
+		<dependency>
+			<groupId>com.qunar.3dparty</groupId>
+			<artifactId>mondrian-kylin-dialect</artifactId>
+			<classifier>dialect</classifier>
 		</dependency>
 		<dependency>
 			<groupId>eigenbase</groupId>

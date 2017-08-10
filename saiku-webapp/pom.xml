@@ -212,6 +212,12 @@
         <dependency>
             <groupId>org.saiku</groupId>
             <artifactId>saiku-query</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>pentaho</groupId>
+                    <artifactId>mondrian</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>

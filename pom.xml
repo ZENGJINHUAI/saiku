@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.saikuanalytics</groupId>
     <artifactId>saiku</artifactId>
     <packaging>pom</packaging>
-    <version>3.14</version> 
+    <version>3.14</version>
     <name>Saiku Module Project</name>
-    <scm>
-        <developerConnection>
-            scm:git:git@github.com:OSBI/saiku.git
-        </developerConnection>
-        <tag>saiku-3.9-SNAPSHOT</tag>
-    </scm>
+
     <modules>
         <module>saiku-core</module>
         <module>saiku-ui</module>
         <module>saiku-webapp</module>
         <module>saiku-server</module>
-       <!-- <module>saiku-bi-platform-plugin-p5</module>
-        <module>saiku-bi-platform-plugin-p6</module>
-        <module>saiku-bi-platform-plugin-p7</module>-->
+        <!-- <module>saiku-bi-platform-plugin-p5</module>
+         <module>saiku-bi-platform-plugin-p6</module>
+         <module>saiku-bi-platform-plugin-p7</module>-->
     </modules>
 
-    <distributionManagement>
+    <!--<distributionManagement>
         <repository>
             <id>utility</id>
             <name>utility-releases</name>
@@ -34,7 +30,27 @@
             <name>utility-snapshots</name>
             <url>http://repo.meteorite.bi/repository/alabs-snapshot-local/</url>
         </snapshotRepository>
+    </distributionManagement>-->
+
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <url>http://svn.corp.qunar.com:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://svn.corp.qunar.com:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Analytical Labs Plugin Repo</id>
+            <name>Analytical Labs Repo-releases</name>
+            <url>http://repo.meteorite.bi/repository/alabs-release-local/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <properties>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
@@ -46,21 +62,14 @@
         <tomcat.version>apache-tomcat-7.0.62</tomcat.version>
         <tomcat.source>target/stage/tomcat/</tomcat.source>
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
-        <calcite.version>0.9.2-incubating-SNAPSHOT</calcite.version>
+        <calcite.version>0.9.2-incubating</calcite.version>
         <pentaho.libs.version>TRUNK-SNAPSHOT</pentaho.libs.version>
         <pentaho.platform.version>5.0.0</pentaho.platform.version>
         <serenity.version>1.0.58</serenity.version>
         <jbehave.version>3.9.3</jbehave.version>
     </properties>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>Analytical Labs Plugin Repo</id>
-            <name>Analytical Labs Repo-releases</name>
-            <url>http://repo.meteorite.bi/repository/alabs-release-local/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
-    <repositories>
+<!--    <repositories>
         <repository>
             <id>Analytical Labs Repo</id>
             <name>Analytical Labs Repo-releases</name>
@@ -83,10 +92,6 @@
             <id>pentaho-snapshot</id>
             <url>http://nexus.pentaho.org/content/repositories/public-snapshots/</url>
         </repository>
-        <!--<repository>
-            <id>atlassian2</id>
-            <url>http://repository.opencastproject.org/</url>
-        </repository>-->
         <repository>
             <id>central</id>
             <name>Maven Repository Switchboard</name>
@@ -116,10 +121,10 @@
             </snapshots>
         </repository>
 
-    	<repository>
-    		<id>pentaho-releases</id>
-    		<url>http://repository.pentaho.org/artifactory/repo/</url>
-    	</repository>
+        <repository>
+            <id>pentaho-releases</id>
+            <url>http://repository.pentaho.org/artifactory/repo/</url>
+        </repository>
 
         <repository>
             <id>miredot</id>
@@ -129,48 +134,49 @@
             <id>clojars</id>
             <url>http://clojars.org/repo/</url>
         </repository>
-    </repositories>
+    </repositories>-->
+
     <build>
         <plugins>
-      <!--      <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changes-plugin</artifactId>
-                <version>2.11</version>
-                <executions>
-                    <execution>
-                        <id>include-announcement-file</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>announcement-generate</goal>
-                        </goals>
-                        <configuration>
-                            <announcementFile>CHANGES.txt</announcementFile>
-                            <announcementDirectory>${project.build.outputDirectory}/META-INF</announcementDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <issueManagementSystems>
-                        <issueManagementSystem>JIRA</issueManagementSystem>
-                    </issueManagementSystems>
-                    <smtpHost>mail.yourhost.com</smtpHost>
-                    <smtpPort implementation="java.lang.Integer">25</smtpPort>
-                    <mailSender>
-                        <name>Release Notification</name>
-                        <email>build@example.com</email>
-                    </mailSender>
-                    <toAddresses>
-                        <toAddress implementation="java.lang.String">to@example.com</toAddress>
-                    </toAddresses>
-                    <useJql>true</useJql>
-                    <onlyCurrentVersion>true</onlyCurrentVersion>
-                    <resolutionIds>Fixed,Done</resolutionIds>
-                    <statusIds>Closed,Resolved,Done</statusIds>
-                    <columnNames>Type,Key,Summary,Priority,Status,Resolution,Fix Version,Assignee</columnNames>
-                    <webUser>...</webUser>
-                    <webPassword>...</webPassword>
-                </configuration>
-            </plugin>-->
+            <!--      <plugin>
+                      <groupId>org.apache.maven.plugins</groupId>
+                      <artifactId>maven-changes-plugin</artifactId>
+                      <version>2.11</version>
+                      <executions>
+                          <execution>
+                              <id>include-announcement-file</id>
+                              <phase>generate-resources</phase>
+                              <goals>
+                                  <goal>announcement-generate</goal>
+                              </goals>
+                              <configuration>
+                                  <announcementFile>CHANGES.txt</announcementFile>
+                                  <announcementDirectory>${project.build.outputDirectory}/META-INF</announcementDirectory>
+                              </configuration>
+                          </execution>
+                      </executions>
+                      <configuration>
+                          <issueManagementSystems>
+                              <issueManagementSystem>JIRA</issueManagementSystem>
+                          </issueManagementSystems>
+                          <smtpHost>mail.yourhost.com</smtpHost>
+                          <smtpPort implementation="java.lang.Integer">25</smtpPort>
+                          <mailSender>
+                              <name>Release Notification</name>
+                              <email>build@example.com</email>
+                          </mailSender>
+                          <toAddresses>
+                              <toAddress implementation="java.lang.String">to@example.com</toAddress>
+                          </toAddresses>
+                          <useJql>true</useJql>
+                          <onlyCurrentVersion>true</onlyCurrentVersion>
+                          <resolutionIds>Fixed,Done</resolutionIds>
+                          <statusIds>Closed,Resolved,Done</statusIds>
+                          <columnNames>Type,Key,Summary,Priority,Status,Resolution,Fix Version,Assignee</columnNames>
+                          <webUser>...</webUser>
+                          <webPassword>...</webPassword>
+                      </configuration>
+                  </plugin>-->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -287,10 +293,6 @@
             </plugins>
         </pluginManagement>
     </build>
-    <issueManagement>
-        <system>JIRA</system>
-        <url>http://jira.meteorite.bi/browse/SKU</url>
-    </issueManagement>
     <!--<reporting>
         <plugins>
             <plugin>
@@ -301,9 +303,9 @@
         </plugins>
     </reporting>-->
     <profiles>
-            <profile>
-                <id>ci</id>
-                <modules>
+        <profile>
+            <id>ci</id>
+            <modules>
                 <module>saiku-core</module>
                 <module>saiku-ui</module>
                 <module>saiku-webapp</module>
@@ -690,12 +692,19 @@
                 <groupId>org.saiku</groupId>
                 <artifactId>saiku-query</artifactId>
                 <version>0.4-SNAPSHOT</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>pentaho</groupId>
+                        <artifactId>mondrian</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
-            <dependency>
+            <!--<dependency>
                 <groupId>pentaho</groupId>
                 <artifactId>mondrian</artifactId>
-                <version>4.3.0.1.1-SPARK</version>
-            </dependency>
+                <version>4.3.0.1-130</version>
+            </dependency>-->
+
             <!-- Spring modules -->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -1035,10 +1044,15 @@
                 <artifactId>commons-io</artifactId>
                 <version>2.4</version>
             </dependency>
-            <dependency>
+            <!--<dependency>
                 <groupId>commons-httpclient</groupId>
                 <artifactId>commons-httpclient</artifactId>
                 <version>20020423</version>
+            </dependency>-->
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
