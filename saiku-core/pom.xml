@@ -18,7 +18,7 @@
     </modules>
     <build>
         <plugins>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.4</version>
@@ -35,7 +35,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <!-- <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.7</version>
@@ -58,7 +58,7 @@
             </plugin> -->
         </plugins>
     </build>
-    <reporting>
+ <!--   <reporting>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -68,19 +68,19 @@
                     <aggregate>true</aggregate>
                 </configuration>
             </plugin>
-            <!-- Unit tests report -->
+            &lt;!&ndash; Unit tests report &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>2.3</version>
             </plugin>
-            <!-- "Release Audit" report (checks license headers etc.) -->
+            &lt;!&ndash; "Release Audit" report (checks license headers etc.) &ndash;&gt;
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>rat-maven-plugin</artifactId>
                 <version>1.0-alpha-3</version>
             </plugin>
-            <!-- FindBugs Report -->
+            &lt;!&ndash; FindBugs Report &ndash;&gt;
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
@@ -90,18 +90,18 @@
                     <effort>Default</effort>
                 </configuration>
             </plugin>
-            <!-- Checkstyle report -->
+            &lt;!&ndash; Checkstyle report &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.12</version>
                 <configuration>
-                    <!--configLocation>checkstyle.xml</configLocation-->
+                    &lt;!&ndash;configLocation>checkstyle.xml</configLocation&ndash;&gt;
                     <configLocation>../pentaho_checkStyle.xml</configLocation>
                     <enableRulesSummary>false</enableRulesSummary>
                 </configuration>
             </plugin>
-            <!-- Project website generation -->
+            &lt;!&ndash; Project website generation &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -116,7 +116,8 @@
                 <version>2.8</version>
             </plugin>
         </plugins>
-    </reporting>
+    </reporting>-->
+
 
     <dependencyManagement>
         <dependencies>

@@ -13,24 +13,11 @@
         <module>saiku-core</module>
         <module>saiku-ui</module>
         <module>saiku-webapp</module>
-        <module>saiku-server</module>
-        <!-- <module>saiku-bi-platform-plugin-p5</module>
+        <!-- <module>saiku-server</module>
+        <module>saiku-bi-platform-plugin-p5</module>
          <module>saiku-bi-platform-plugin-p6</module>
          <module>saiku-bi-platform-plugin-p7</module>-->
     </modules>
-
-    <!--<distributionManagement>
-        <repository>
-            <id>utility</id>
-            <name>utility-releases</name>
-            <url>http://repo.meteorite.bi/repository/alabs-release-local/</url>
-        </repository>
-        <snapshotRepository>
-            <id>utility</id>
-            <name>utility-snapshots</name>
-            <url>http://repo.meteorite.bi/repository/alabs-snapshot-local/</url>
-        </snapshotRepository>
-    </distributionManagement>-->
 
     <distributionManagement>
         <repository>
@@ -59,8 +46,6 @@
         <spring.security.version>4.0.1.RELEASE</spring.security.version>
         <slf4j.version>1.6.4</slf4j.version>
         <jersey.version>1.19</jersey.version>
-        <tomcat.version>apache-tomcat-7.0.62</tomcat.version>
-        <tomcat.source>target/stage/tomcat/</tomcat.source>
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <calcite.version>0.9.2-incubating</calcite.version>
         <pentaho.libs.version>TRUNK-SNAPSHOT</pentaho.libs.version>
@@ -69,114 +54,8 @@
         <jbehave.version>3.9.3</jbehave.version>
     </properties>
 
-<!--    <repositories>
-        <repository>
-            <id>Analytical Labs Repo</id>
-            <name>Analytical Labs Repo-releases</name>
-            <url>http://repo.meteorite.bi/repository/alabs-release-local/</url>
-        </repository>
-        <repository>
-            <id>Analytical Labs snapshots</id>
-            <name>Analytical Labs Repo-releases</name>
-            <url>http://repo.meteorite.bi/repository/alabs-snapshot-local/</url>
-        </repository>
-        <repository>
-            <id>pentaho-third-party</id>
-            <url>http://nexus.pentaho.org/content/repositories/proxied-3rd-party-releases/</url>
-        </repository>
-        <repository>
-            <id>pentaho-public-release</id>
-            <url>http://nexus.pentaho.org/content/repositories/pentaho-public-release-repos/</url>
-        </repository>
-        <repository>
-            <id>pentaho-snapshot</id>
-            <url>http://nexus.pentaho.org/content/repositories/public-snapshots/</url>
-        </repository>
-        <repository>
-            <id>central</id>
-            <name>Maven Repository Switchboard</name>
-            <layout>default</layout>
-            <url>http://repo1.maven.org/maven2</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>apache</id>
-            <name>Apache repo</name>
-            <layout>default</layout>
-            <url>https://repository.apache.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>atlassian</id>
-            <name>Atlassian Public</name>
-            <layout>default</layout>
-            <url>https://maven.atlassian.com/content/repositories/atlassian-public</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>pentaho-releases</id>
-            <url>http://repository.pentaho.org/artifactory/repo/</url>
-        </repository>
-
-        <repository>
-            <id>miredot</id>
-            <url>http://nexus.qmino.com/content/repositories/miredot/</url>
-        </repository>
-        <repository>
-            <id>clojars</id>
-            <url>http://clojars.org/repo/</url>
-        </repository>
-    </repositories>-->
-
     <build>
         <plugins>
-            <!--      <plugin>
-                      <groupId>org.apache.maven.plugins</groupId>
-                      <artifactId>maven-changes-plugin</artifactId>
-                      <version>2.11</version>
-                      <executions>
-                          <execution>
-                              <id>include-announcement-file</id>
-                              <phase>generate-resources</phase>
-                              <goals>
-                                  <goal>announcement-generate</goal>
-                              </goals>
-                              <configuration>
-                                  <announcementFile>CHANGES.txt</announcementFile>
-                                  <announcementDirectory>${project.build.outputDirectory}/META-INF</announcementDirectory>
-                              </configuration>
-                          </execution>
-                      </executions>
-                      <configuration>
-                          <issueManagementSystems>
-                              <issueManagementSystem>JIRA</issueManagementSystem>
-                          </issueManagementSystems>
-                          <smtpHost>mail.yourhost.com</smtpHost>
-                          <smtpPort implementation="java.lang.Integer">25</smtpPort>
-                          <mailSender>
-                              <name>Release Notification</name>
-                              <email>build@example.com</email>
-                          </mailSender>
-                          <toAddresses>
-                              <toAddress implementation="java.lang.String">to@example.com</toAddress>
-                          </toAddresses>
-                          <useJql>true</useJql>
-                          <onlyCurrentVersion>true</onlyCurrentVersion>
-                          <resolutionIds>Fixed,Done</resolutionIds>
-                          <statusIds>Closed,Resolved,Done</statusIds>
-                          <columnNames>Type,Key,Summary,Priority,Status,Resolution,Fix Version,Assignee</columnNames>
-                          <webUser>...</webUser>
-                          <webPassword>...</webPassword>
-                      </configuration>
-                  </plugin>-->
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -245,28 +124,6 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>validate</id>
-                        <phase>validate</phase>
-                        <configuration>
-                            <configLocation>${top.dir}/src/main/config/checkstyle/checker.xml</configLocation>
-                            <suppressionsLocation>${top.dir}/src/main/config/checkstyle/suppressions.xml</suppressionsLocation>
-                            <consoleOutput>true</consoleOutput>
-                            <headerLocation>${top.dir}/src/main/config/checkstyle/header.txt</headerLocation>
-                            <failOnViolation>true</failOnViolation>
-                            <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                        </configuration>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
-
         </plugins>
         <pluginManagement>
             <plugins>
@@ -309,8 +166,8 @@
                 <module>saiku-core</module>
                 <module>saiku-ui</module>
                 <module>saiku-webapp</module>
-                <module>saiku-server</module>
-                <!--<module>saiku-bi-platform-plugin-p5</module>
+                <!--<module>saiku-server</module>
+                <module>saiku-bi-platform-plugin-p5</module>
                 <module>saiku-web-tests</module>-->
             </modules>
         </profile>

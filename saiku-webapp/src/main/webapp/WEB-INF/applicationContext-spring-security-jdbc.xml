@@ -17,11 +17,11 @@
             ignore-unresolvable="true"
             order ="0" />
 
-    <context:property-placeholder
+    <!--<context:property-placeholder
             location="file:///${ext.prop.dir}applicationContext-spring-security-jdbc.properties"
             ignore-resource-not-found="true"
             ignore-unresolvable="true"
-            order ="-1" />
+            order ="-1" />-->
 
 
     <security:authentication-manager alias="authenticationManager">
@@ -57,8 +57,7 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbcauth.driver}" />
-        <property name="url"
-                  value="${jdbcauth.url}"/>
+        <property name="url" value="${jdbcauth.url}"/>
         <property name="username" value="${jdbcauth.username}" />
         <property name="password" value="${jdbcauth.password}" />
     </bean>

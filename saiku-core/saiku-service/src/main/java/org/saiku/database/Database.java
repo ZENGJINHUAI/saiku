@@ -86,8 +86,8 @@ public class Database {
     public void init() throws SQLException {
         initDB();
         loadUsers();
-       // loadFoodmart();
-       // loadEarthquakes();
+        loadFoodmart();
+        loadEarthquakes();
         loadLegacyDatasources();
         importLicense();
     }
@@ -116,7 +116,8 @@ public class Database {
             DatabaseMetaData dbm = c.getMetaData();
             ResultSet tables = dbm.getTables(null, null, "account", null);
 
-            if (!tables.next()) {
+            boolean flag = !tables.next();
+            if (flag) {
                 // Table exists
                 Statement statement = c.createStatement();
 

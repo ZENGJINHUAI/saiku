@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
 public final class SaikuWebdavServlet extends SimpleWebdavServlet {
 
 
-    private RepositoryDatasourceManager bean;
+  private RepositoryDatasourceManager bean;
   private CSRFUtil csrfUtil;
   private UserService us;
 

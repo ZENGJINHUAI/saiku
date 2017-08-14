@@ -11,6 +11,7 @@
     <packaging>war</packaging>
     <build>
         <plugins>
+<!--
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -35,6 +36,8 @@
                     </instructions>
                 </configuration>
             </plugin>
+-->
+<!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -60,6 +63,7 @@
                     </execution>
                 </executions>
             </plugin>
+-->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -94,16 +98,16 @@
                             <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
-
                 </configuration>
             </plugin>
+<!--
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.7</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>
-                        <!-- here the phase you need -->
+                        &lt;!&ndash; here the phase you need &ndash;&gt;
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -123,6 +127,8 @@
                     </execution>
                 </executions>
             </plugin>
+-->
+<!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
@@ -141,6 +147,8 @@
                     </execution>
                 </executions>
             </plugin>
+-->
+<!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -158,6 +166,8 @@
                     </execution>
                 </executions>
             </plugin>
+-->
+<!--
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
@@ -170,7 +180,9 @@
                     <warSourceExcludes>WEB-INF/saiku-beans.xml</warSourceExcludes>
                 </configuration>
             </plugin>
+-->
         </plugins>
+
     </build>
     <dependencies>
         <dependency>
@@ -335,9 +347,10 @@
             <version>3.6.2</version>
         </dependency>
     </dependencies>
+<!--
     <reporting>
         <plugins>
-            <!-- Produce Source cross references -->
+            &lt;!&ndash; Produce Source cross references &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
@@ -346,19 +359,19 @@
                     <aggregate>true</aggregate>
                 </configuration>
             </plugin>
-            <!-- Unit tests report -->
+            &lt;!&ndash; Unit tests report &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>2.3</version>
             </plugin>
-            <!-- "Release Audit" report (checks license headers etc.) -->
+            &lt;!&ndash; "Release Audit" report (checks license headers etc.) &ndash;&gt;
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>rat-maven-plugin</artifactId>
                 <version>1.0-alpha-3</version>
             </plugin>
-            <!-- FindBugs Report -->
+            &lt;!&ndash; FindBugs Report &ndash;&gt;
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
@@ -368,17 +381,17 @@
                     <effort>Default</effort>
                 </configuration>
             </plugin>
-            <!-- Checkstyle report -->
+            &lt;!&ndash; Checkstyle report &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.1</version>
                 <configuration>
-                    <!--configLocation>checkstyle.xml</configLocation -->
+                    &lt;!&ndash;configLocation>checkstyle.xml</configLocation &ndash;&gt;
                     <enableRulesSummary>false</enableRulesSummary>
                 </configuration>
             </plugin>
-            <!-- Project website generation -->
+            &lt;!&ndash; Project website generation &ndash;&gt;
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -389,4 +402,5 @@
             </plugin>
         </plugins>
     </reporting>
+-->
 </project>
