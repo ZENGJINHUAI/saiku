@@ -100,7 +100,7 @@ public class RepositoryDatasourceManager implements IDatasourceManager {
 
         try {
             irm.start(userService);
-            this.saveInternalFile("/etc" + separator + ".repo_version", "d20f0bea-681a-11e5-9d70-feff819cdc9f", null);
+            this.saveInternalFile(foodmartdir + separator + ".repo_version", "d20f0bea-681a-11e5-9d70-feff819cdc9f", null);
         } catch (RepositoryException e) {
             log.error("Could not start repo", e);
         }
@@ -142,7 +142,14 @@ public class RepositoryDatasourceManager implements IDatasourceManager {
                                 props.put("location", p);
                             }
                         } else if (file.getLocation() != null) {
-                            props.put("location", file.getLocation());
+                            if(file.getName().equals("earthquakes")) {
+
+                                props.put("location", "jdbc:mondrian:Jdbc=jdbc:h2:"+earthquakedir+"/earthquakes;MODE=MySQL;Catalog="+earthquakedir+"/Earthquakes.xml;JdbcDrivers=org.h2.Driver");
+                            }else if(file.getName().equals("foodmart")){
+                                props.put("location", "jdbc:mondrian:Jdbc=jdbc:h2:"+foodmartdir+"/foodmart;MODE=MySQL;Catalog="+foodmartdir+"/FoodMart4.xml;JdbcDrivers=org.h2.Driver");
+                            }else{
+                                props.put("location", file.getLocation());
+                            }
                         }
                         if (file.getUsername() != null && file.getPropertyKey() == null) {
                             props.put("username", file.getUsername());

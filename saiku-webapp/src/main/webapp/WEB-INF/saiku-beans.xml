@@ -66,7 +66,6 @@
 
     <bean id="h2database" class="org.saiku.database.Database" init-method="init">
         <property name="datasourceManager" ref="repositoryDsManager"/>
-
     </bean>
 
     <bean id="authorisationPredicate"
@@ -101,7 +100,7 @@
     </bean>
 
     <bean id="userDaoDataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+          class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="${userdao.driverclass}"/>
         <property name="url"
                   value="${userdao.url}"/>

@@ -10,6 +10,7 @@
     <name>saiku - webapp</name>
     <packaging>war</packaging>
     <build>
+        <finalName>saiku</finalName>
         <plugins>
 <!--
             <plugin>
@@ -100,6 +101,7 @@
                     </archive>
                 </configuration>
             </plugin>
+
 <!--
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
