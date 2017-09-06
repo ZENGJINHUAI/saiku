@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Schema name="payinfo_schema">  
+<Cube name="payinfo_cube_busi_payway">  
+    <!-- 事实表(fact table) -->  
+    <Table name="FACT_PAYINFO" />  
+    <Dimension name="地域">  
+        <Hierarchy hasAll="false">  
+            <Table name="DIM_BUSI"></Table>  
+            <Level name="OTATYPE" column="OTATYPE" table="DIM_BUSI"></Level>
+            <Level name="BUSI_TYPE_ID" column="BUSI_TYPE_ID" table="DIM_BUSI"/>
+            <Level name="BUSI_TYPE" column="BUSI_TYPE" table="DIM_BUSI"/>
+            <Table name="DIM_PAYWAY"></Table>  
+            <Level name="PAY_WAY" column="PAY_WAY" table="DIM_PAYWAY"></Level>
+        </Hierarchy> 
+    </Dimension>  
+  
+    <Measure name="订单数" column="UNIQUE_KEY" aggregator="distinct-count" datatype="Integer" />
+    <Measure name="总支付金额" column="PAY_AMOUNT" aggregator="sum" datatype="Numeric" />
+    <Measure name="支付次数" column="BATCH_PAYMENT_ID" aggregator="distinct-count" datatype="Integer" />
+    <Measure name="用户数" column="USER_ID" aggregator="distinct-count" datatype="Integer" />
+    <Measure name="gid数" column="GID" aggregator="distinct-count" datatype="Integer" />
+</Cube>  
+</Schema>

@@ -87,7 +87,8 @@ public class SecurityAwareConnectionManager extends AbstractConnectionManager im
 	
 	
 	@Override
-	protected ISaikuConnection getInternalConnection(String name, SaikuDatasource datasource) {
+	protected ISaikuConnection
+	getInternalConnection(String name, SaikuDatasource datasource) {
 
 		ISaikuConnection con = null;
 		if (isDatasourceSecurity(datasource, ISaikuConnection.SECURITY_TYPE_PASSTHROUGH_VALUE) && sessionService != null) {

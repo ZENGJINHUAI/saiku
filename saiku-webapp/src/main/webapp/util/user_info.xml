@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<Schema name="payinfo_schema">  
+<Cube name="payinfo_cube_busi_payway">  
+    <!-- 事实表(fact table) -->  
+    <Table name="USER_INFO" />
+    <Dimension name="日期">
+        <Hierarchy hasAll="false">
+            <Table name="USER_INFO"></Table>
+            <Level name="日期" column="DT" table="USER_INFO"></Level>
+        </Hierarchy>
+    </Dimension>  
+  
+    <Measure name="用户数(DISTINCT-COUNT)" column="USERID" aggregator="distinct-count" datatype="Integer" />
+    <Measure name="用户数(COUNT)" column="USERID" aggregator="count" datatype="Integer" />
+</Cube>
+</Schema>
