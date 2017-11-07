@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Schema name="payinfo_schema">  
+<Schema name="userinfo_schema">
 <Cube name="payinfo_cube_busi_payway">  
     <!-- 事实表(fact table) -->  
     <Table name="USER_INFO" />

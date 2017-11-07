@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Schema name="payinfo_one_table">
+    <Cube name="payinfo">
+        <!-- 事实表(fact table) -->
+        <Table name="payinfo" />
+        <Dimension name="日期">
+            <Hierarchy hasAll="true">
+                <Level name="dt" column="dt" />
+            </Hierarchy>
+        </Dimension>
+
+        <Dimension name="业务线">
+            <Hierarchy name="BUSI_TYPE" hasAll="true">
+                <Level name="BUSI_TYPE" column="busi_type"/>
+            </Hierarchy>
+            <Hierarchy name="BUSI_TYPE_ID" hasAll="true">
+                <Level name="BUSI_TYPE_ID" column="busi_type_id"/>
+            </Hierarchy>
+            <Hierarchy name="OTATYPE" hasAll="true">
+                <Level name="OTATYPE" column="otatype" type="Numeric" />
+            </Hierarchy>
+        </Dimension>
+
+        <Dimension name="支付方式">
+            <Hierarchy hasAll="true">
+                <Level name="PAY_WAY" column="pay_way" />
+            </Hierarchy>
+        </Dimension>
+
+        <Measure name="订单数" column="unique_key" aggregator="distinct-count" datatype="Integer" />
+    </Cube>
+</Schema>

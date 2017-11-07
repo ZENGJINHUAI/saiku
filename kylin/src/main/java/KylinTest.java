@@ -14,13 +14,13 @@ public class KylinTest {
 
         // 配置登录Kylin的用户名和密码
         Properties info= new Properties();
-        info.put("user","ADMIN");
-        info.put("password","KYLIN");
-        String sql= "select dt,count(*) from user_info group by dt order by dt;";
+        info.put("user","jinhuai.zeng");
+        info.put("password","");
+        String sql= "select \"YEAR\", quarter, \"MONTH\", \"DAY\", t3.busi_type_id, sum(cashier_enter), sum(pay_succ) from fact_order_track t1 join dim_cal t2 on (t1.cal_key=t2.cal_key) join dim_busi t3 on(t1.busi_key=t3.busi_key) group by \"YEAR\",quarter,\"MONTH\",\"DAY\",busi_type_id order by \"YEAR\",quarter,\"MONTH\",\"DAY\",busi_type_id; ";
 
         System.out.println(sql);
         // 连接Kylin服务
-        Connection conn= driver.connect("jdbc:kylin://localhost:7070/user_info",info);
+        Connection conn= driver.connect("jdbc:kylin://kylin.corp.qunar.com/paydev_mods",info);
         Statement state= conn.createStatement();
 
         ResultSet resultSet =state.executeQuery(sql);
@@ -28,7 +28,7 @@ public class KylinTest {
         while(resultSet.next()) {
             String col1 = resultSet.getString(1);
             String col2 = resultSet.getString(2);
-            //String col3 = resultSet.getString(3);
+            String col3 = resultSet.getString(3);
             System.out.println(col1+ "\t" + col2 );
         }
     }

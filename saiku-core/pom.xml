@@ -123,9 +123,9 @@
         <dependencies>
             <dependency>
                 <groupId>com.qunar.3dparty</groupId>
-                <artifactId>mondrian-kylin-dialect</artifactId>
-                <version>0.1</version>
-                <classifier>dialect</classifier>
+                <artifactId>mondrian</artifactId>
+                <version>4.4</version>
+                <classifier>kylin-dialect</classifier>
             </dependency>
         </dependencies>
     </dependencyManagement>

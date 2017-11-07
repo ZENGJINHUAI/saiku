@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<Schema name="order_track_schema" metamodelVersion="4.0">
+    <PhysicalSchema>
+        <Table name="FACT_ORDER_TRACK" />
+        <Table name="DIM_BUSI" />
+        <Table name="DIM_PAYWAY" />
+        <Table name="DIM_CAL" />
+        <Table name="DIM_USER" />
+        <Table name="DIM_CLIENT" />
+    </PhysicalSchema>
+    <Cube name="order_track_cube">
+        <Dimensions>
+            <Dimension name="业务线" table="DIM_BUSI" key="BUSI_KEY">
+                <Attributes>
+                    <Attribute name="BUSI_KEY" keyColumn="BUSI_KEY" />
+                    <Attribute name="BUSI_TYPE" keyColumn="BUSI_TYPE" />
+                    <Attribute name="BUSI_TYPE_ID" keyColumn="BUSI_TYPE_ID" />
+                </Attributes>
+            </Dimension>
+
+            <Dimension name="支付方式" table="DIM_PAYWAY" key="PAY_WAY_KEY">
+                <Attributes>
+                    <Attribute name="PAY_WAY_KEY" keyColumn="PAY_WAY_KEY" />
+                    <Attribute name="PAY_WAY" keyColumn="PAY_WAY" />
+                </Attributes>
+            </Dimension>
+
+            <Dimension name="客户端" table="DIM_CLIENT" key="CLIENT_KEY">
+                <Attributes>
+                    <Attribute name="CLIENT_KEY" keyColumn="CLIENT_KEY" />
+                    <Attribute name="平台" keyColumn="CASHIER_NAME" />
+                    <Attribute name="客户端类型" keyColumn="PLATFORM" />
+                </Attributes>
+            </Dimension>
+
+            <Dimension name="用户" table="DIM_USER" key="USER_KEY">
+                <Attributes>
+                    <Attribute name="USER_KEY" keyColumn="USER_KEY" />
+                    <Attribute name="是否登录" keyColumn="LOGIN_STATUS" />
+                    <Attribute name="新老用户" keyColumn="WHETHER_NEW_STATUS" />
+                </Attributes>
+            </Dimension>
+
+            <Dimension name="日期" table="DIM_CAL" key="CAL_KEY">
+                <Attributes>
+                    <Attribute name="CAL_KEY" keyColumn="CAL_KEY" />
+                    <Attribute name="YEAR" keyColumn="YEAR" />
+                    <Attribute name="QUARTER" keyColumn="QUARTER" />
+                    <Attribute name="MONTH" keyColumn="MONTH" />
+                    <Attribute name="DAY" keyColumn="DAY" />
+                </Attributes>
+            </Dimension>
+
+        </Dimensions>
+
+        <MeasureGroups>
+            <MeasureGroup table="FACT_ORDER_TRACK">
+                <Measures>
+                    <Measure name="收银台订单数" column="CASHIER_ENTER" aggregator="sum" datatype="Integer" />
+                    <Measure name="点击支付按钮订单数" column="CLICK_PAY_BUTTON" aggregator="sum" datatype="Integer" />
+                    <Measure name="开始业务线校验订单数" column="BEGIN_PREPAY_CHECK" aggregator="sum" datatype="Integer" />
+                    <Measure name="结束业务线校验订单数" column="END_PREPAY_CHECK" aggregator="sum" datatype="Integer" />
+                    <Measure name="支付成功订单数" column="PAY_SUCC" aggregator="sum" datatype="Integer" />
+                    <Measure name="总支付金额" column="PAY_AMOUNT" aggregator="sum" datatype="Numeric" />
+                    <Measure name="支付次数" column="PAY_TIMES" aggregator="sum" datatype="Integer" />
+                </Measures>
+                <DimensionLinks>
+                    <ForeignKeyLink dimension="业务线" foreignKeyColumn="BUSI_KEY"/>
+                    <ForeignKeyLink dimension="支付方式" foreignKeyColumn="PAY_WAY_KEY"/>
+                    <ForeignKeyLink dimension="客户端" foreignKeyColumn="CLIENT_KEY"/>
+                    <ForeignKeyLink dimension="用户" foreignKeyColumn="USER_KEY"/>
+                    <ForeignKeyLink dimension="日期" foreignKeyColumn="CAL_KEY"/>
+                </DimensionLinks>
+            </MeasureGroup>
+        </MeasureGroups>
+
+        <CalculatedMembers>
+            <CalculatedMember name="转化率" dimension="Measures" formula="[Measures].[支付成功订单数] / [Measures].[收银台订单数]">
+                <CalculatedMemberProperty name="FORMAT_STRING" value="##.##%"/>
+            </CalculatedMember>
+        </CalculatedMembers>
+
+    </Cube>
+</Schema>

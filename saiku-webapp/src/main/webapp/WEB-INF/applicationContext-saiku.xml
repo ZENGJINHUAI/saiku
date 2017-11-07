@@ -25,7 +25,7 @@
   
   If you modify these files in anyway it would be very useful if you sent us patches for any useful changes you make.
    -->
-  
+
   <!-- BASIC AUTHENTICATION -->
     <security:http pattern="/rest/saiku/info" security="none">
     </security:http>

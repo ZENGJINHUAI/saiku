@@ -43,6 +43,5 @@
 
   <div id="footer">Design by <a href="http://www.pyserwebdesigns.com" target="_blank">Pyser Web Designs</a></div>
 
-
 </body>
 </html>

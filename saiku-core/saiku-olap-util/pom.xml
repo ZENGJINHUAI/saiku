@@ -64,8 +64,8 @@
 		</dependency>-->
 		<dependency>
 			<groupId>com.qunar.3dparty</groupId>
-			<artifactId>mondrian-kylin-dialect</artifactId>
-			<classifier>dialect</classifier>
+			<artifactId>mondrian</artifactId>
+			<classifier>kylin-dialect</classifier>
 		</dependency>
 		<dependency>
 			<groupId>eigenbase</groupId>

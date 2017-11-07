@@ -5,6 +5,9 @@
 <web-app>
 
 	<display-name>saiku</display-name>
+    <welcome-file-list>
+        <welcome-file>login_qsso.jsp</welcome-file>
+    </welcome-file-list>
 
 	<context-param>
 		<param-name>encoding</param-name>
@@ -294,5 +297,7 @@
         <servlet-name>xmla</servlet-name>
         <url-pattern>/xmla/*</url-pattern>
     </servlet-mapping>
+
+
 
 </web-app>
