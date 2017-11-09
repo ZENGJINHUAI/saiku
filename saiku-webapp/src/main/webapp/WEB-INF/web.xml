@@ -5,9 +5,12 @@
 <web-app>
 
 	<display-name>saiku</display-name>
+
+<!--
     <welcome-file-list>
-        <welcome-file>login_qsso.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+-->
 
 	<context-param>
 		<param-name>encoding</param-name>
@@ -91,6 +94,7 @@
     <!-- ====================================================================== -->
     <!-- W E B D A V S E R V L E T -->
     <!-- ====================================================================== -->
+<!--
     <servlet>
         <servlet-name>Webdav</servlet-name>
         <description>
@@ -123,7 +127,7 @@
     <servlet>
         <servlet-name>H2Console</servlet-name>
         <servlet-class>org.h2.server.web.WebServlet</servlet-class>
-        <!--
+        &lt;!&ndash;
         <init-param>
             <param-name>webAllowOthers</param-name>
             <param-value></param-value>
@@ -132,13 +136,14 @@
             <param-name>trace</param-name>
             <param-value></param-value>
         </init-param>
-        -->
+        &ndash;&gt;
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>H2Console</servlet-name>
         <url-pattern>/console/*</url-pattern>
     </servlet-mapping>
+-->
 
 	<servlet>
     	<servlet-name>jersey2</servlet-name>
@@ -180,6 +185,7 @@
     <servlet-name>jersey2</servlet-name>
     <url-pattern>/rest/saiku/session</url-pattern>
   </servlet-mapping>-->
+<!--
     <servlet>
         <servlet-name>xmla</servlet-name>
         <servlet-class>org.saiku.olap.util.SaikuXmlaServlet</servlet-class>
@@ -298,6 +304,6 @@
         <url-pattern>/xmla/*</url-pattern>
     </servlet-mapping>
 
-
+-->
 
 </web-app>

@@ -187,34 +187,25 @@
 
     </build>
     <dependencies>
+
+        <!-- servlet-->
         <dependency>
-            <groupId>org.jasig.cas.client</groupId>
-            <artifactId>cas-client-integration-tomcat-common</artifactId>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
         <dependency>
-            <groupId>org.jasig.cas.client</groupId>
-            <artifactId>cas-client-integration-tomcat-v7</artifactId>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
+
+        <!-- qsso
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-cas</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.saikuanalytics</groupId>
-            <artifactId>saiku-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-cli</artifactId>
-        </dependency>
+            <groupId>com.qunar.security</groupId>
+            <artifactId>qsso-client</artifactId>
+            <version>0.0.3</version>
+        </dependency>-->
+
         <dependency>
             <groupId>org.saikuanalytics</groupId>
             <artifactId>saiku-web</artifactId>
@@ -233,6 +224,8 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-spring</artifactId>
@@ -260,6 +253,38 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>org.jasig.cas.client</groupId>
+            <artifactId>cas-client-integration-tomcat-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jasig.cas.client</groupId>
+            <artifactId>cas-client-integration-tomcat-v7</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-cas</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.saikuanalytics</groupId>
+            <artifactId>saiku-service</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-cli</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-spring</artifactId>
@@ -274,23 +299,20 @@
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-multipart</artifactId>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-json</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <groupId>org.jvnet.mimepull</groupId>
             <artifactId>mimepull</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
         </dependency>
 
         <dependency>
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -303,6 +325,7 @@
             <groupId>net.sourceforge.jtds</groupId>
             <artifactId>jtds</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -315,6 +338,7 @@
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
@@ -349,60 +373,62 @@
             <version>3.6.2</version>
         </dependency>
     </dependencies>
-<!--
-    <reporting>
-        <plugins>
-            &lt;!&ndash; Produce Source cross references &ndash;&gt;
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <aggregate>true</aggregate>
-                </configuration>
-            </plugin>
-            &lt;!&ndash; Unit tests report &ndash;&gt;
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.3</version>
-            </plugin>
-            &lt;!&ndash; "Release Audit" report (checks license headers etc.) &ndash;&gt;
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>rat-maven-plugin</artifactId>
-                <version>1.0-alpha-3</version>
-            </plugin>
-            &lt;!&ndash; FindBugs Report &ndash;&gt;
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <configuration>
-                    <threshold>Normal</threshold>
-                    <effort>Default</effort>
-                </configuration>
-            </plugin>
-            &lt;!&ndash; Checkstyle report &ndash;&gt;
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    &lt;!&ndash;configLocation>checkstyle.xml</configLocation &ndash;&gt;
-                    <enableRulesSummary>false</enableRulesSummary>
-                </configuration>
-            </plugin>
-            &lt;!&ndash; Project website generation &ndash;&gt;
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>2.0-beta-7</version>
-                <configuration>
-                    <outputEncoding>UTF-8</outputEncoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
--->
+
+
+    <!--
+        <reporting>
+            <plugins>
+                &lt;!&ndash; Produce Source cross references &ndash;&gt;
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>2.1</version>
+                    <configuration>
+                        <aggregate>true</aggregate>
+                    </configuration>
+                </plugin>
+                &lt;!&ndash; Unit tests report &ndash;&gt;
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>2.3</version>
+                </plugin>
+                &lt;!&ndash; "Release Audit" report (checks license headers etc.) &ndash;&gt;
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>rat-maven-plugin</artifactId>
+                    <version>1.0-alpha-3</version>
+                </plugin>
+                &lt;!&ndash; FindBugs Report &ndash;&gt;
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <threshold>Normal</threshold>
+                        <effort>Default</effort>
+                    </configuration>
+                </plugin>
+                &lt;!&ndash; Checkstyle report &ndash;&gt;
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>2.1</version>
+                    <configuration>
+                        &lt;!&ndash;configLocation>checkstyle.xml</configLocation &ndash;&gt;
+                        <enableRulesSummary>false</enableRulesSummary>
+                    </configuration>
+                </plugin>
+                &lt;!&ndash; Project website generation &ndash;&gt;
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>2.0-beta-7</version>
+                    <configuration>
+                        <outputEncoding>UTF-8</outputEncoding>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </reporting>
+    -->
 </project>
