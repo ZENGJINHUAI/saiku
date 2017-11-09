@@ -42,6 +42,10 @@ public class AnonymousSessionService implements ISessionService {
     return null;
   }
 
+  @Override public Map<String, Object> loginWithDefaultPass(HttpServletRequest req, String usernam) throws Exception {
+    return null;
+  }
+
   public void logout( HttpServletRequest req ) {
     // TODO Auto-generated method stub
 

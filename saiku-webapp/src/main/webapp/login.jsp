@@ -2,6 +2,12 @@
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import="org.springframework.context.ApplicationContext"%>
+<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
+<%@ page import="org.saiku.service.ISessionService" %>
+<%@ page import="com.qunar.security.QSSO" %>
+<%@ page import="com.qunar.security.qsso.model.QUser" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,34 +15,51 @@
   <title>支付中心多维分析系统</title>
 </head>
 <body id="login">
-
-<div id="login-wrapper" class="png_bg">
-  <center>
-    <h1>登 录</h1>
-  </center>
-  <div id="login-content">
-    <center>
-      <form name="form1" <%--action="<%=request.getContextPath()%>/users/login"--%> method="post">
-        <div style="display: none" id="authStatus">${authStatus}</div>
-        <input class="button" type="button" id='qunar_sso_login_btn'
-               title="使用公司的SSO登陆" value="公司SSO登录"/>
-      </form>
-    </center>
-  </div>
-  <!-- End #login-content -->
+<%
+  if(request.getParameter("token") == null){
+%>
+<div class="qsso" style="text-align: center">
+  <p>
+    <img src="https://qsso.corp.qunar.com/img/logo.png" border="0" alt="" />
+  </p>
+  <!-- 添加一个登录按钮 -->
+  <button id="qsso-login" class="mybutton">QSSO登录</button>
 </div>
-<!-- End #login-wrapper -->
+
 </body>
 <script src="https://qsso.corp.qunar.com/lib/qsso-auth.js?t=<?=rand()?>"></script>
 <script type="text/javascript">
-  QSSO.attach('qunar_sso_login_btn', '<%=request.getContextPath()%>/saiku/login.jsp');
+  QSSO.attach('qsso-login', '<%=request.getContextPath()%>/login.jsp');
 </script>
 
 <%
-  out.print(request.getCookies());
-  out.print(request.getAuthType());
-  out.print(request.getHeaderNames());
-  out.print(request.getRequestURI());
-  out.print(request.getParameterMap());
+  }else{
+    ServletContext sc = this.getServletConfig().getServletContext();
+    ApplicationContext ac = WebApplicationContextUtils.getWebApplicationContext(sc);
+
+    ISessionService sessionService = (ISessionService)ac.getBean("sessionService");
+    QUser user = QSSO.getQUser(request.getParameter("token"));
+
+    if(null == user) {
+      response.setStatus(response.SC_MOVED_TEMPORARILY);
+      response.setHeader("Location", "/saiku/login.jsp");
+    }
+
+    try {
+      sessionService.loginWithDefaultPass(request, user.getUserId());
+      response.setStatus(response.SC_MOVED_TEMPORARILY);
+      response.setHeader("Location", "/saiku/index.html");
+    }catch (Exception e){
+%>
+<div style="text-align: center">
+  <p>
+    <img src="https://qsso.corp.qunar.com/img/logo.png" border="0" alt="" />
+  </p>
+  <!-- 添加一个登录按钮 -->
+  <p>没有该系统权限，添加权限请联系　jinhuai.zeng</p>
+</div>
+<%
+    }
+  }
 %>
 </html>

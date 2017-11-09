@@ -153,6 +153,10 @@ public class SessionService implements ISessionService {
 		return null;*/
 	}
 
+	public Map<String, Object> loginWithDefaultPass(HttpServletRequest req, String username) throws LicenseException {
+		return login(req, username, "paydata");
+	}
+
 	private void createSession(Authentication auth, String username, String password) {
 
 		if (auth ==  null || !auth.isAuthenticated()) {

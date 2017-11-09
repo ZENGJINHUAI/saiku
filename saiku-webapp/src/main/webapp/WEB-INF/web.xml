@@ -6,11 +6,9 @@
 
 	<display-name>saiku</display-name>
 
-<!--
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
--->
 
 	<context-param>
 		<param-name>encoding</param-name>

@@ -24,6 +24,9 @@ public interface ISessionService {
   Map<String, Object> login(HttpServletRequest req,
                             String username, String password) throws Exception;
 
+  Map<String, Object> loginWithDefaultPass(HttpServletRequest req,
+          String usernam) throws Exception;
+
   void logout(HttpServletRequest req);
 
   void authenticate(HttpServletRequest req, String username,
