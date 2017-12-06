@@ -88,61 +88,6 @@
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
 
-
-    <!-- ====================================================================== -->
-    <!-- W E B D A V S E R V L E T -->
-    <!-- ====================================================================== -->
-<!--
-    <servlet>
-        <servlet-name>Webdav</servlet-name>
-        <description>
-            The webdav servlet that connects HTTP request to the repository.
-        </description>
-        <servlet-class>org.saiku.repository.SaikuWebdavServlet</servlet-class>
-        <init-param>
-            <param-name>resource-path-prefix</param-name>
-            <param-value>/repository</param-value>
-            <description>
-                defines the prefix for spooling resources out of the repository.
-            </description>
-        </init-param>
-        <init-param>
-            <param-name>resource-config</param-name>
-            <param-value>/WEB-INF/config.xml</param-value>
-            <description>
-                Defines various dav-resource configuration parameters.
-            </description>
-        </init-param>
-
-        <load-on-startup>4</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Webdav</servlet-name>
-        <url-pattern>/repository/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>H2Console</servlet-name>
-        <servlet-class>org.h2.server.web.WebServlet</servlet-class>
-        &lt;!&ndash;
-        <init-param>
-            <param-name>webAllowOthers</param-name>
-            <param-value></param-value>
-        </init-param>
-        <init-param>
-            <param-name>trace</param-name>
-            <param-value></param-value>
-        </init-param>
-        &ndash;&gt;
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>H2Console</servlet-name>
-        <url-pattern>/console/*</url-pattern>
-    </servlet-mapping>
--->
-
 	<servlet>
     	<servlet-name>jersey2</servlet-name>
     	<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>

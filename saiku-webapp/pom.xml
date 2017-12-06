@@ -12,60 +12,6 @@
     <build>
         <finalName>saiku</finalName>
         <plugins>
-<!--
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.3.7</version>
-                <extensions>true</extensions>
-
-                <configuration>
-                    <supportedProjectTypes>
-                        <supportedProjectType>war</supportedProjectType>
-                    </supportedProjectTypes>
-                    <manifestLocation>./src/main/webapp/META-INF</manifestLocation>
-                    <instructions>
-                        <_wab>src/main/webapp</_wab>
-                        <Export-Package>org.saiku</Export-Package>
-                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-ClassPath>.,WEB-INF/classes,{maven-dependencies}</Bundle-ClassPath>
-                        <Embed-Directory>WEB-INF/lib</Embed-Directory>
-                        <Embed-Dependency>*;scope=compile|runtime;</Embed-Dependency>
-                        <Embed-Transitive>true</Embed-Transitive>
-                        <Web-ContextPath>/saiku</Web-ContextPath>
-                        <Webapp-Context />
-                    </instructions>
-                </configuration>
-            </plugin>
--->
-<!--
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.saikuanalytics</groupId>
-                                    <artifactId>saiku-web</artifactId>
-                                    <version>${project.version}</version>
-                                    <type>jar</type>
-                                    <classifier>sources</classifier>
-                                    <outputDirectory>target/saiku-webapp-3.0.1-SNAPSHOT/WEB-INF/lib/</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
--->
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -102,87 +48,10 @@
                 </configuration>
             </plugin>
 
-<!--
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.7</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        &lt;!&ndash; here the phase you need &ndash;&gt;
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/saiku-webapp-${project.version}/WEB-INF</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>src/main/webapp/WEB-INF</directory>
-                                    <filtering>true</filtering>
-                                    <includes>
-                                        <include>saiku-beans.xml</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
--->
-<!--
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>deploy-ui</id>
-                        <phase>prepare-package</phase>
-                        <configuration>
-                            <tasks>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
--->
-<!--
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
-                <executions>
-                    <execution>
-                        <id>surefire-it</id>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <skip>false</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
--->
-<!--
             <plugin>
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.10</version>
             </plugin>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <warSourceExcludes>WEB-INF/saiku-beans.xml</warSourceExcludes>
-                </configuration>
-            </plugin>
--->
         </plugins>
 
     </build>
@@ -219,6 +88,7 @@
             <version>0.0.5</version>
         </dependency>
 
+        <!-- saiku -->
         <dependency>
             <groupId>org.saikuanalytics</groupId>
             <artifactId>saiku-web</artifactId>

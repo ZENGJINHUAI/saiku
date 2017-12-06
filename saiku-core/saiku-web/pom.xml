@@ -79,10 +79,12 @@
         <dependency>
             <groupId>org.saikuanalytics</groupId>
             <artifactId>saiku-service</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.saikuanalytics</groupId>
             <artifactId>saiku-olap-util</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
