@@ -75,9 +75,19 @@
         </MeasureGroups>
 
         <CalculatedMembers>
+            <CalculatedMember name="提交率" dimension="Measures" formula="[Measures].[开始业务线校验订单数] / [Measures].[收银台订单数]">
+                <CalculatedMemberProperty name="FORMAT_STRING" value="##.##%"/>
+            </CalculatedMember>
+            <CalculatedMember name="发起扣款率" dimension="Measures" formula="[Measures].[结束业务线校验订单数] / [Measures].[开始业务线校验订单数]">
+                <CalculatedMemberProperty name="FORMAT_STRING" value="##.##%"/>
+            </CalculatedMember>
+            <CalculatedMember name="扣款成功率" dimension="Measures" formula="[Measures].[支付成功订单数] / [Measures].[结束业务线校验订单数]">
+                <CalculatedMemberProperty name="FORMAT_STRING" value="##.##%"/>
+            </CalculatedMember>
             <CalculatedMember name="转化率" dimension="Measures" formula="[Measures].[支付成功订单数] / [Measures].[收银台订单数]">
                 <CalculatedMemberProperty name="FORMAT_STRING" value="##.##%"/>
             </CalculatedMember>
+
         </CalculatedMembers>
 
     </Cube>
